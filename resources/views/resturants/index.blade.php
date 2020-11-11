@@ -2,14 +2,11 @@
 @section('styles')
 @stop
 @section('content')
-
-
     @if (Session::has('success'))
         <div class="alert alert-success">{{ Session::get('success') }}</div>
     @elseif(Session::has('danger'))
         <div class="alert alert-danger">{{ Session::get('danger') }}</div>
     @endif
-
     <div class="page-wrapper" style="min-height: 170px;">
 
         <!-- ============================================================== -->
@@ -55,6 +52,7 @@
                                         <th rowspan="1" colspan="1">Phone</th>
                                         <th rowspan="1" colspan="1">Logo</th>
                                         <th rowspan="1" colspan="1">Status</th>
+                                        <th rowspan="1" colspan="1">Actions</th>
                                         </thead>
 
 
@@ -70,8 +68,15 @@
 
                                             <td>   <img width="200px" height="200px" src="{{asset('uploads/logos/'.$resturant->logo)}}" alt=""></td>
                                             <td>{{$resturant->is_ative==0?'Active':'Deactive'}}</td>
+                                            <td>
+                                                <a class="btn btn-info" href="{{route('resturants-show',$resturant->id)}}" >show details</a>
+                                                <a class="btn btn-warning" href="{{route('resturants-edit',$resturant->id)}}" >edit resturant</a>
+                                            </td>
                                         </tr>
 @endforeach
+
+
+
 
                                    </tbody>
                                     </table><div class="dataTables_info" id="example23_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div><div class="dataTables_paginate paging_simple_numbers" id="example23_paginate"><a class="paginate_button previous disabled" aria-controls="example23" data-dt-idx="0" tabindex="0" id="example23_previous">Previous</a><span><a class="paginate_button current" aria-controls="example23" data-dt-idx="1" tabindex="0">1</a><a class="paginate_button " aria-controls="example23" data-dt-idx="2" tabindex="0">2</a><a class="paginate_button " aria-controls="example23" data-dt-idx="3" tabindex="0">3</a><a class="paginate_button " aria-controls="example23" data-dt-idx="4" tabindex="0">4</a><a class="paginate_button " aria-controls="example23" data-dt-idx="5" tabindex="0">5</a><a class="paginate_button " aria-controls="example23" data-dt-idx="6" tabindex="0">6</a></span><a class="paginate_button next" aria-controls="example23" data-dt-idx="7" tabindex="0" id="example23_next">Next</a></div></div>

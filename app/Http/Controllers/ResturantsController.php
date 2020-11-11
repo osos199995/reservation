@@ -26,6 +26,7 @@ class ResturantsController extends Controller
 
 
     public function store(Request $request){
+
         DB::beginTransaction();
         try{
         if($request->hasfile('image'))
@@ -78,5 +79,23 @@ class ResturantsController extends Controller
             }
         $resturants=Vendor::paginate(10);
         return view('resturants.index',compact('resturants'));
+}
+
+
+    public function show($id)
+    {
+        $resturant=Vendor::find($id);
+
+
+        return view('resturants.show',compact('resturant'));
+    }
+
+
+    public function edit($id){
+        $resturant=Vendor::find($id);
+        $resturantcategories=\App\ResturantsCategories::where('status',0)->get();
+        $resturanttypes=\App\ResturantsTypes::where('status',0)->get();
+        $resturantoptions=\App\ResturantsOptions::where('status',0)->get();
+        return view('resturants.edit',compact('resturant','resturantcategories','resturantoptions','resturanttypes'));
 }
 }

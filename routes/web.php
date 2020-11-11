@@ -35,6 +35,9 @@ Route::prefix('admin')->group(function(){
     Route::get('resturants','ResturantsController@index')->name('resturants');
     Route::get('create-resturants','ResturantsController@create')->name('create-resturants');
     Route::post('resturants-store','ResturantsController@store')->name('resturants-store');
+    Route::get('resturants-show/{id}','ResturantsController@show')->name('resturants-show');
+    Route::get('resturants-edit/{id}','ResturantsController@edit')->name('resturants-edit');
+    Route::put('resturants-update/{id}','ResturantsController@update')->name('resturants-update');
 
 // resturant categories
     Route::get('resturants-categories','ResturantsCategories@index')->name('resturants-categories');
