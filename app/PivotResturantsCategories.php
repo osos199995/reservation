@@ -8,6 +8,6 @@ class PivotResturantsCategories extends Model
 {
 
     public $fillable = [
-        'vendor_id','resturant_categories_id'
+        'vendor_id','resturants_categories_id'
     ];
 }

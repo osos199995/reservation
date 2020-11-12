@@ -41,7 +41,9 @@
                     <div class="card card-body">
 
                         <h6 class="card-subtitle"> Crate Resturant </h6>
-                        {!! Form::model([$resturant,'method'=>'post','route'=>['resturants-store'],'files'=>true]) !!}
+                        {!! Form::model($resturant,['method'=>'PATCH','action'=>['ResturantsController@update',$resturant->id],'files'=>true]) !!}
+                        @csrf_field
+                        {{ method_field('patch') }}
                         <div class="form-group">
                             <label>Name <span class="help"> e.g. "KFC"</span></label>
                             <input type="text"  value="{{$resturant->name}}" name="name" class="form-control" placeholder="write name of resturant">
@@ -50,18 +52,14 @@
                             <label for="example-email">Email <span class="help"> e.g. "example@gmail.com"</span></label>
                             <input type="email" value="{{$resturant->email}}"  name="email" class="form-control" placeholder="write your Email">
                         </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="*********">
-                        </div>
+{{--                        <div class="form-group">--}}
+{{--                            <label>Password</label>--}}
+{{--                            <input type="password" name="password" class="form-control" placeholder="*********">--}}
+{{--                        </div>--}}
                         <div class="form-group">
                             <label>phone</label>
                             <input type="text" value="{{$resturant->phone}}" name="phone" class="form-control" placeholder="write the phone number of resturant">
                         </div>
-
-
-
-
                         <div class="form-group row p-t-20">
 
                             <div class="col-sm-4">

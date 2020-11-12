@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class PivotResturantsOptions extends Model
 {
     public $fillable = [
-        'resturant_id','resturanturan_options_id'
+        'vendor_id','resturanturan_options_id'
     ];
 }
