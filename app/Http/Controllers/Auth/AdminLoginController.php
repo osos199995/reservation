@@ -18,6 +18,19 @@ class AdminLoginController extends Controller
         return view('auth.admin-login');
     }
 
+    public function logout (Request $request) {
+        //logout user
+        Auth::guard('admin')->logout();
+
+        $request->session()->flush();
+
+        $request->session()->regenerate();
+
+
+        // redirect to homepage
+        return redirect('/admin/login');
+    }
+
     public function login(Request $request)
     {
         // Validate form data
