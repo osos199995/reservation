@@ -31,8 +31,8 @@
                     </div>
                     <div class="card">
                         <div class="card-body"> <small class="text-muted">{{$resturant->name}} </small>
-                            <small class="text-muted p-t-30 db">email</small>    <h6>{{$resturant->email}}</h6>
-                            <small class="text-muted p-t-30 db">phone</small>  <h6>{{$resturant->phone}}</h6>
+                            <small class="text-muted p-t-30 db">{{__('messages.Email')}}</small>    <h6>{{$resturant->email}}</h6>
+                            <small class="text-muted p-t-30 db">{{__('messages.phone')}}</small>  <h6>{{$resturant->phone}}</h6>
 {{--                            <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>--}}
 {{--                            <div class="map-box">--}}
 {{--                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen=""></iframe>--}}
@@ -48,12 +48,12 @@
                 <!-- Column -->
                 <div class="col-lg-8 col-xlg-9 col-md-7">
                     <div class="card">
-                        <h2>Resturants info :</h2>
+                        <h2>{{__('messages.resturants')}} :</h2>
                         <div class="card-body"> <small class="text-muted">{{$resturant->name}} </small>
-                            <small class="text-muted p-t-30 db">email</small>    <h6>{{$resturant->email}}</h6>
-                            <small class="text-muted p-t-30 db">phone</small>  <h6>{{$resturant->phone}}</h6>
-                            <small class="text-muted p-t-30 db">Type</small>  <h6>{{$resturant->Type->name}}</h6>
-                            <small class="text-muted p-t-30 db">categories :</small>
+                            <small class="text-muted p-t-30 db">{{__('messages.Email')}}</small>    <h6>{{$resturant->email}}</h6>
+                            <small class="text-muted p-t-30 db">{{__('messages.phone')}}</small>  <h6>{{$resturant->phone}}</h6>
+                            <small class="text-muted p-t-30 db">{{__('messages.type')}}</small>  <h6>{{$resturant->Type->name}}</h6>
+                            <small class="text-muted p-t-30 db">{{__('messages.categories')}} :</small>
                             @foreach($resturant->Categories as $category)
 
                                 <h6>{{$category->name}}</h6>

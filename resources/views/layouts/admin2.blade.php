@@ -11,18 +11,34 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Admin Pro Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Footable CSS -->
-    <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
-    <!-- Page CSS -->
-    <link href="{{asset('assets/css/pages/contact-app-page.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/pages/footable-page.css')}}" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-    <!-- You can change the theme colors from here -->
-    <link href="{{asset('assets/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
+    @if (\Illuminate\Support\Facades\App::getLocale() == 'en')
+        <!-- Bootstrap Core CSS -->
+            <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+            <!-- Footable CSS -->
+            <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
+            <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
+            <!-- Page CSS -->
+            <link href="{{asset('assets/css/pages/contact-app-page.css')}}" rel="stylesheet">
+            <link href="{{asset('assets/css/pages/footable-page.css')}}" rel="stylesheet">
+            <!-- Custom CSS -->
+            <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+            <!-- You can change the theme colors from here -->
+            <link href="{{asset('assets/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
+        @else(\Illuminate\Support\Facades\App::getLocale() == 'ar')
+        <!-- Bootstrap Core CSS -->
+            <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+            <!-- Footable CSS -->
+            <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
+            <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
+            <!-- Page CSS -->
+            <link href="{{asset('assets/rtl/css/pages/contact-app-page.css')}}" rel="stylesheet">
+            <link href="{{asset('assets/rtl/css/pages/footable-page.css')}}" rel="stylesheet">
+            <!-- Custom CSS -->
+            <link href="{{asset('assets/rtl/css/style.css')}}" rel="stylesheet">
+            <!-- You can change the theme colors from here -->
+            <link href="{{asset('assets/rtl/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
+    @endif
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -32,7 +48,13 @@
     @yield('styles')
 </head>
 
-<body class="fix-header card-no-border fix-sidebar">
+<body
+    @if (\Illuminate\Support\Facades\App::getLocale() == 'ar')
+      style="direction: rtl"
+    @elseif (\Illuminate\Support\Facades\App::getLocale() == 'en')
+    style="direction: ltr"
+      @endif
+      class="fix-header card-no-border fix-sidebar">
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
@@ -90,7 +112,16 @@
                     <!-- ============================================================== -->
                     <!-- Search -->
                     <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="flag-icon flag-icon-us"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right animated bounceInDown">
+                            <a class="dropdown-item" href="{{url('setlang/ar')}}"><i class="flag-icon flag-icon-kw" title="kw" id="kw"></i>Arabic</a>
 
+                            <a class="dropdown-item" href="{{url('setlang/en')}}"><i class="flag-icon flag-icon-us"></i> English</a>
+
+                        </div>
+
+                    </li>
 
                     <!-- End Comment -->
                     <!-- ============================================================== -->
@@ -130,21 +161,27 @@
     <!-- ============================================================== -->
     <!-- Left Sidebar - style you can find in sidebar.scss  -->
     <!-- ============================================================== -->
-    <aside class="left-sidebar">
+    <aside     @if (\Illuminate\Support\Facades\App::getLocale() == 'ar')
+               style="direction: rtl"
+               @elseif (\Illuminate\Support\Facades\App::getLocale() == 'en')
+               style="direction: ltr"
+               @endif class="left-sidebar">
         <!-- Sidebar scroll-->
         <div class="scroll-sidebar">
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
+
+
                     <li class="">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                            <i class="mdi mdi-bullseye"></i><span class="hide-menu">Resturants</span></a>
+                            <i class="mdi mdi-bullseye"></i><span class="hide-menu">{{__('messages.resturants')}}</span></a>
 
                         <ul aria-expanded="false" class="collapse" style="height: 0px;">
-                            @role('admin')
-                            <li><a href="{{route('create-resturants')}}">create resturants</a></li>
-                            @endrole
-                            <li><a href="{{route('resturants')}}">show resturants</a></li>
+
+                            <li><a href="{{route('create-resturants')}}">{{__('messages.create')}}</a></li>
+
+                            <li><a href="{{route('resturants')}}">{{__('messages.show')}}</a></li>
 
                         </ul>
 
@@ -152,29 +189,30 @@
 
 
 
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">resturant categories </span></a>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">{{__('messages.Resturant_Categories')}} </span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('create-resturants-categories')}}">create resturants categories</a></li>
-                            <li><a href="{{route('resturants-categories')}}">show resturants categories</a></li>
+                            <li><a href="{{route('create-resturants-categories')}}">{{__('messages.create')}}</a></li>
+                            <li><a href="{{route('resturants-categories')}}">{{__('messages.show')}}</a></li>
                         </ul>
                     </li>
 
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">resturant options </span></a>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> {{__('messages.Resturant_options')}}</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('create-resturants-options')}}">create resturants options</a></li>
-                            <li><a href="{{route('resturants-options')}}">show resturants options</a></li>
+                            <li><a href="{{route('create-resturants-options')}}">{{__('messages.create')}}</a></li>
+                            <li><a href="{{route('resturants-options')}}">{{__('messages.show')}}</a></li>
                         </ul>
                     </li>
 
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">resturant types </span></a>
+                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">    {{__('messages.Resturant_types')}} </span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('create-resturants-types')}}">create resturants types</a></li>
-                            <li><a href="{{route('resturants-types')}}">show resturants types</a></li>
+                            <li><a href="{{route('create-resturants-types')}}">{{__('messages.create')}}</a></li>
+                            <li><a href="{{route('resturants-types')}}">{{__('messages.show')}}</a></li>
                         </ul>
                     </li>
 
 
                 </ul>
+
             </nav>
             <!-- End Sidebar navigation -->
         </div>
@@ -188,31 +226,59 @@
 
 </div>
 @yield('content')
+@if (\Illuminate\Support\Facades\App::getLocale() == 'en')
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{asset('assets/js/perfect-scrollbar.jquery.min.js')}}"></script>
+    <!--Wave Effects -->
+    <script src="{{asset('assets/js/waves.js')}}"></script>
+    <!--Menu sidebar -->
+    <script src="{{asset('assets/js/sidebarmenu.js')}}"></script>
+    <!--stickey kit -->
+    <script src="{{asset('assets/plugins/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{asset('assets/js/custom.min.js')}}"></script>
+    <!-- Footable -->
+    <script src="{{asset('assets/plugins/footable/js/footable.all.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.js')}}" type="text/javascript"></script>
+    <!--FooTable init-->
+    <script src="{{asset('assets/js/footable-init.js')}}"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{{asset('assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+@else(\Illuminate\Support\Facades\App::getLocale() == 'ar')
+    <script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{asset('assets/rtl/js/perfect-scrollbar.jquery.min.js')}}"></script>
+    <!--Wave Effects -->
+    <script src="{{asset('assets/rtl/js/waves.js')}}"></script>
+    <!--Menu sidebar -->
+    <script src="{{asset('assets/rtl/js/sidebarmenu.js')}}"></script>
+    <!--stickey kit -->
+    <script src="{{asset('assets/plugins/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{asset('assets/rtl/js/custom.min.js')}}"></script>
+    <!-- Footable -->
+    <script src="{{asset('assets/plugins/footable/js/footable.all.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.js')}}" type="text/javascript"></script>
+    <!--FooTable init-->
+    <script src="{{asset('assets/rtl/js/footable-init.js')}}"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{{asset('assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+    @endif
 
-<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
-<!-- Bootstrap tether Core JavaScript -->
-<script src="{{asset('assets/plugins/bootstrap/js/popper.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-<!-- slimscrollbar scrollbar JavaScript -->
-<script src="{{asset('assets/js/perfect-scrollbar.jquery.min.js')}}"></script>
-<!--Wave Effects -->
-<script src="{{asset('assets/js/waves.js')}}"></script>
-<!--Menu sidebar -->
-<script src="{{asset('assets/js/sidebarmenu.js')}}"></script>
-<!--stickey kit -->
-<script src="{{asset('assets/plugins/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
-<script src="{{asset('assets/plugins/sparkline/jquery.sparkline.min.js')}}"></script>
-<!--Custom JavaScript -->
-<script src="{{asset('assets/js/custom.min.js')}}"></script>
-<!-- Footable -->
-<script src="{{asset('assets/plugins/footable/js/footable.all.min.js')}}"></script>
-<script src="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.js')}}" type="text/javascript"></script>
-<!--FooTable init-->
-<script src="{{asset('assets/js/footable-init.js')}}"></script>
-<!-- ============================================================== -->
-<!-- Style switcher -->
-<!-- ============================================================== -->
-<script src="{{asset('assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+
 @yield('scripts')
 </body>
 

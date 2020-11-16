@@ -38,6 +38,7 @@ class ResturantOptions extends Controller
         \App\ResturantsOptions::create([
 
             'name'=>$request->name,
+            'name_ar'=>$request->name_ar,
         ]);
         return redirect()->back();
     }

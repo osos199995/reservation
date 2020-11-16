@@ -39,6 +39,7 @@ class ResturantsCategories extends Controller
         \App\ResturantsCategories::create([
 
             'name'=>$request->name,
+            'name_ar'=>$request->name_ar,
         ]);
         return redirect()->back();
     }

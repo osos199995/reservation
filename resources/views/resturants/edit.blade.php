@@ -15,18 +15,12 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">create resturant</h3>
+                    <h3 class="text-themecolor">{{__('messages.edit')}} {{__('messages.resturants')}}</h3>
                 </div>
-                <div class="col-md-7 align-self-center">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item">Forms</li>
-                        <li class="breadcrumb-item active">Form Basic</li>
-                    </ol>
-                </div>
-                <div class="">
-                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                </div>
+
+{{--                <div class="">--}}
+{{--                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>--}}
+{{--                </div>--}}
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -40,16 +34,24 @@
                 <div class="col-sm-12">
                     <div class="card card-body">
 
-                        <h6 class="card-subtitle"> Crate Resturant </h6>
+                        <h6 class="card-subtitle"> {{__('messages.edit')}} {{__('messages.resturants')}} </h6>
                         {!! Form::model($resturant,['method'=>'PATCH','action'=>['ResturantsController@update',$resturant->id],'files'=>true]) !!}
-                        @csrf_field
+
                         {{ method_field('patch') }}
                         <div class="form-group">
-                            <label>Name <span class="help"> e.g. "KFC"</span></label>
-                            <input type="text"  value="{{$resturant->name}}" name="name" class="form-control" placeholder="write name of resturant">
+                            <label>{{__('messages.Name')}} </label>
+                            <input type="text"
+                                   @if (\Illuminate\Support\Facades\App::getLocale('en'))
+                                   value="{{$resturant->name}}"
+                                   @else
+                                   value="{{$resturant->name_ar}}"
+                                   @endif
+
+                                   name="name" class="form-control"
+                                   placeholder="write name of resturant">
                         </div>
                         <div class="form-group">
-                            <label for="example-email">Email <span class="help"> e.g. "example@gmail.com"</span></label>
+                            <label for="example-email">{{__('messages.Email')}} </label>
                             <input type="email" value="{{$resturant->email}}"  name="email" class="form-control" placeholder="write your Email">
                         </div>
 {{--                        <div class="form-group">--}}
@@ -57,7 +59,7 @@
 {{--                            <input type="password" name="password" class="form-control" placeholder="*********">--}}
 {{--                        </div>--}}
                         <div class="form-group">
-                            <label>phone</label>
+                            <label>{{__('messages.phone')}}</label>
                             <input type="text" value="{{$resturant->phone}}" name="phone" class="form-control" placeholder="write the phone number of resturant">
                         </div>
                         <div class="form-group row p-t-20">
@@ -80,7 +82,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Resturant Categories</label>
+                            <label>{{__('messages.Resturant_Categories')}}</label>
                             <select name="category[]"  multiple="multiple" class="custom-select col-12" id="inlineFormCustomSelect">
                                 @foreach($resturantcategories as $resturantcategory)
                                     <option  value="{{$resturantcategory->id}}">{{$resturantcategory->name}}</option>
@@ -88,7 +90,7 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Resturant options</label>
+                            <label>{{__('messages.Resturant_options')}}</label>
                             <select  name="option[]" multiple="multiple" class="custom-select col-12" id="inlineFormCustomSelect">
                                 @foreach($resturantoptions as $resturantoption)
                                     <option value="{{$resturantoption->id}}">{{$resturantoption->name}}</option>
@@ -106,7 +108,7 @@
                             </label>
                         </fieldset>
 
-                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">create</button>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{__('messages.edit')}}</button>
 
                         {!! form::close() !!}
                     </div>

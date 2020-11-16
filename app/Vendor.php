@@ -4,6 +4,9 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+use League\Flysystem\Config;
 
 class Vendor extends Authenticatable
 {
@@ -12,7 +15,7 @@ class Vendor extends Authenticatable
     protected $guard = 'vendor';
 
     protected $fillable = [
-        'name', 'email', 'password','phone','logo','status','resturanttype_id'
+        'name','name_ar', 'email', 'password','phone','logo','status','resturanttype_id'
     ];
 
     protected $hidden = [
@@ -33,5 +36,16 @@ return $this->belongsToMany('App\ResturantsCategories', 'resturants_categories_v
 
     public function Type(){
         return $this->hasOne('App\ResturantsTypes','id','resturanttype_id');
+    }
+
+
+    public function getNameAttribute($value){
+        if( Session::get('locale') == 'ar' ){
+
+            return $this->name_ar;
+        }else{
+
+            return $value;
+        }
     }
 }

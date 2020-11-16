@@ -15,7 +15,7 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">create resturant options</h3>
+                    <h3 class="text-themecolor">{{__('messages.create').' '}} {{__('messages.Resturant_options')}}</h3>
                 </div>
 
 
@@ -34,11 +34,16 @@
 
                         {!! Form::open(['method'=>'post','route'=>['resturants-options-store'],'files'=>true]) !!}
                         <div class="form-group">
-                            <label>Name<span class="help"> e.g. "musician band"</span></label>
-                            <input type="text" class="form-control" name="name"  placeholder="musician band" required>
+                            <label>{{__('messages.Name')}}</label>
+                            <input type="text" class="form-control" name="name"  placeholder="{{__('messages.musician_band')}}" required>
                         </div>
-                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">create</button>
-                        <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+
+                        <div class="form-group">
+                            <label>{{__('messages.Name_ar')}}</label>
+                            <input type="text" class="form-control" name="name_ar"  placeholder="{{__('messages.musician_band')}}" required>
+                        </div>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{__('messages.create')}}</button>
+{{--                        <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>--}}
                         {!! form::close() !!}
                     </div>
                 </div>

@@ -39,6 +39,7 @@ class ResturantTypes extends Controller
         \App\ResturantsTypes::create([
 
             'name'=>$request->name,
+            'name_ar'=>$request->name_ar,
         ]);
         return redirect()->back();
     }

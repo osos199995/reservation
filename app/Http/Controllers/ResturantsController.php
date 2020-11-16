@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResturantRequest;
 use App\PivotResturantsCategories;
 use App\PivotResturantsOptions;
 use App\Vendor;
@@ -27,7 +28,7 @@ class ResturantsController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ResturantRequest $request)
     {
 
         DB::beginTransaction();
@@ -40,6 +41,7 @@ class ResturantsController extends Controller
 
                 $resturant = Vendor::create([
                     'name' => $request->name,
+                    'name_ar' => $request->name_ar,
                     'email' => $request->email,
                     'phone' => $request->phone,
                     'password' => bcrypt($request->password),

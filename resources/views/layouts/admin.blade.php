@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html dir="">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin, bootstrap 4, css3 dashboard, bootstrap 4 dashboard, adminpro admin bootstrap 4 dashboard, frontend, responsive bootstrap 4 admin template, adminpro design, adminpro dashboard bootstrap 4 dashboard template">
-    <meta name="description" content="Admin Pro is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Admin Pro Template by WrapPixel</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/adminpro/">
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- Favicon icon -->
+<link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+<title>Admin Pro Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
+@if (\Illuminate\Support\Facades\App::getLocale() == 'en')
     <!-- Bootstrap Core CSS -->
     <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-{{--    <link href="{{asset('assets/plugins/perfect-scrollbar/dist/css/perfect-scrollbar.min.css')}}" rel="stylesheet">--}}
-    <!-- This page CSS -->
-    <!-- chartist CSS -->
-    <link href="{{asset('assets/plugins/chartist-js/dist/chartist.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.css')}}" rel="stylesheet">
-    <!--c3 CSS -->
-    <link href="{{asset('assets/plugins/c3-master/c3.min.css')}}" rel="stylesheet">
-    <!--Toaster Popup message CSS -->
-    <link href="{{asset('assets/plugins/toast-master/css/jquery.toast.css')}}" rel="stylesheet">
+    <!-- Footable CSS -->
+    <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
+    <!-- Page CSS -->
+    <link href="{{asset('assets/css/pages/contact-app-page.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/pages/footable-page.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-    <!-- Dashboard 1 Page CSS -->
-    <link href="{{asset('assets/css/pages/dashboard1.css')}}" rel="stylesheet">
     <!-- You can change the theme colors from here -->
     <link href="{{asset('assets/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/plugins/sidebar-nav/dist/sidebar-nav.min.css')}}" />
+@else
+    <!-- Bootstrap Core CSS -->
+    <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Footable CSS -->
+    <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
+    <!-- Page CSS -->
+    <link href="{{asset('assets/css/pages/contact-app-page.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/css/pages/footable-page.css')}}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{asset('assets/rtl/css/style.css')}}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{{asset('assets/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
+@endif
 
-    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style>
-
-    @yield('styles')
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+@yield('styles')
 </head>
 <body class="fix-header fix-sidebar card-no-border">
 <!-- ============================================================== -->
@@ -51,16 +56,7 @@
         <p class="loader__label">Admin Pro</p>
     </div>
 </div>
-<!-- ============================================================== -->
-<!-- Main wrapper - style you can find in pages.scss -->
-<!-- ============================================================== -->
 
-
-
-
-<!-- ============================================================== -->
-<!-- Style switcher -->
-<!-- ============================================================== -->
 
 @yield('content')
 

@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Admin routes
 Route::prefix('admin')->group(function(){
-    Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
+
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
@@ -32,7 +32,9 @@ Route::prefix('admin')->group(function(){
     Route::get('/register', 'Auth\AdminRegisterController@showRegisterForm')->name('admin.register');
     Route::post('/register', 'Auth\AdminRegisterController@register')->name('admin.register.submit');
 
-    Route::group(['middleware' => 'admin'], function () {
+    Route::group(['middleware' => ['admin','local']], function () {
+   //index
+        Route::get('/', 'Users\Admin\AdminController@index')->name('admin.dashboard');
 // vendors routes
     Route::get('resturants','ResturantsController@index')->name('resturants');
     Route::get('create-resturants','ResturantsController@create')->name('create-resturants');
@@ -74,8 +76,17 @@ Route::prefix('vendor')->group(function(){
     Route::post('/login', 'Auth\VendorLoginController@login')->name('vendor.login.submit');
     Route::get('/register', 'Auth\VendorRegisterController@showRegisterForm')->name('vendor.register');
     Route::post('/register', 'Auth\VendorRegisterController@register')->name('vendor.register.submit');
+
+// localization routes
+
+
 });
+
+
+
+
+
 });
 
 
-
+Route::get('setlang/{locale}', 'Localization@set_lang')->name('setlang');
