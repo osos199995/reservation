@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Http\Requests\ResturantRequest;
 use App\PivotResturantsCategories;
 use App\PivotResturantsOptions;
@@ -9,12 +10,16 @@ use App\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Mockery\Exception;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use function PHPUnit\Framework\throwException;
 
 class ResturantsController extends Controller
 {
     public function index()
     {
+
+
         $resturants = Vendor::paginate(10);
         return view('resturants.index', compact('resturants'));
     }

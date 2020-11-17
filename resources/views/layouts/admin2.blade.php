@@ -178,9 +178,9 @@
                             <i class="mdi mdi-bullseye"></i><span class="hide-menu">{{__('messages.resturants')}}</span></a>
 
                         <ul aria-expanded="false" class="collapse" style="height: 0px;">
-
+    @role('manager','admin')
                             <li><a href="{{route('create-resturants')}}">{{__('messages.create')}}</a></li>
-
+@endrole
                             <li><a href="{{route('resturants')}}">{{__('messages.show')}}</a></li>
 
                         </ul>
