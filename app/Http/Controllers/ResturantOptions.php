@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ResturantOptions extends Controller
 {
@@ -69,9 +71,22 @@ class ResturantOptions extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+
     public function edit($id)
     {
-        //
+        $resturantoption = \App\ResturantsOptions::find($id);
+
+        return view('resturantoptions.edit', compact('resturantoption'));
     }
 
     /**
@@ -83,7 +98,28 @@ class ResturantOptions extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        if (Session::get('locale') == 'en') {
+            $resturantoption = DB::table('resturants_options')->where('id', $id)->first();
+            foreach ($resturantoption as $resturantoptio) {
+                DB::table('resturants_options')
+                    ->where('id', $id)
+                    ->update(['name' => $request->name]);
+            }
+        } elseif (Session::get('locale') == 'ar') {
+            $resturantoption = DB::table('resturants_options')->where('id', $id)->first();
+            foreach ($resturantoption as $resturantoptio) {
+                DB::table('resturants_options')
+                    ->where('id', $id)
+                    ->update(['name_ar' => $request->name_ar]);
+            }
+
+        }
+        Session::flash('success',  trans('messages.edit_successfully'));
+
+        return redirect()->back();
+
     }
 
     /**

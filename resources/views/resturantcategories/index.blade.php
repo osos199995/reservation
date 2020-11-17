@@ -84,7 +84,12 @@
                                                     {!! Form::open(['method'=>'post','route'=>['resturants-categories-status',$resturantCategory],'files'=>true]) !!}
 
                                                     <input type="hidden" name="status" value="0">
-                                                    <td><button class="btn btn-success">{{__('messages.Active')}}</button></td>
+                                                    <td><button class="btn btn-success">{{__('messages.Active')}}</button>
+
+                                                        <a class="btn btn-warning" href="{{route('resturants-categories-edit',$resturantCategory->id)}}" >{{__('messages.edit')}}</a>
+                                                    </td>
+
+
                                                     {!! Form::close() !!}
                                                 @endif
                                             {!! Form::close() !!}

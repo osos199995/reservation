@@ -31,4 +31,5 @@ return[
     'egyption'=>'مصرى',
     'musician_band'=>'فرقة موسيقية',
     'pack_up'=>'تيك اواى',
-];
+'edit_successfully'=>'تم التعديل بنجاج',
+    ];

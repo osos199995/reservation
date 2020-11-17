@@ -48,6 +48,8 @@ Route::prefix('admin')->group(function(){
     Route::get('create-resturants-categories','ResturantsCategories@create')->name('create-resturants-categories');
     Route::post('resturants-categories-store','ResturantsCategories@store')->name('resturants-categories-store');
     Route::post('resturants-categories-status/{id}','ResturantsCategories@changeStatus')->name('resturants-categories-status');
+    Route::get('resturants-categories-edit/{id}','ResturantsCategories@edit')->name('resturants-categories-edit');
+Route::patch('resturants-categories-update/{id}','ResturantsCategories@update')->name('resturants-categories-update');
 
 
 
@@ -56,7 +58,8 @@ Route::prefix('admin')->group(function(){
     Route::get('create-options-categories','ResturantOptions@create')->name('create-resturants-options');
     Route::post('resturants-options-store','ResturantOptions@store')->name('resturants-options-store');
     Route::post('resturants-options-status/{id}','ResturantOptions@changeStatus')->name('resturants-options-status');
-
+        Route::get('resturants-options-edit/{id}','ResturantOptions@edit')->name('resturants-options-edit');
+        Route::patch('resturants-options-update/{id}','ResturantOptions@update')->name('resturants-options-update');
 
     // resturant types
     Route::get('resturants-types','ResturantTypes@index')->name('resturants-types');
@@ -64,6 +67,8 @@ Route::prefix('admin')->group(function(){
     Route::post('resturants-types-store','ResturantTypes@store')->name('resturants-types-store');
     Route::post('resturants-types-status/{id}','ResturantTypes@changeStatus')->name('resturants-types-status');
 
+        Route::get('resturants-types-edit/{id}','ResturantTypes@edit')->name('resturants-types-edit');
+        Route::patch('resturants-types-update/{id}','ResturantTypes@update')->name('resturants-types-update');
 
 });
 

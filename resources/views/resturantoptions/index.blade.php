@@ -72,13 +72,16 @@
                                                     {!! Form::open(['method'=>'post','route'=>['resturants-options-status',$resturantsOption],'files'=>true]) !!}
                                                     <input type="hidden" name="status" value="1">
 
-                                                    <td><button class="btn btn-danger">Deactive</button></td>
+                                                    <td><button class="btn btn-danger">Deactive</button>
+                                                        <a class="btn btn-warning" href="{{route('resturants-options-edit',$resturantsOption->id)}}" >{{__('messages.edit')}}</a>
+                                                    </td>
                                                     {!! Form::close() !!}
                                                 @else
                                                     {!! Form::open(['method'=>'post','route'=>['resturants-options-status',$resturantsOption],'files'=>true]) !!}
 
                                                     <input type="hidden" name="status" value="0">
-                                                    <td><button class="btn btn-success">Activete</button></td>
+                                                    <td><button class="btn btn-success">Activete</button>
+                                                    </td>
                                                     {!! Form::close() !!}
                                                 @endif
                                                 {!! Form::close() !!}

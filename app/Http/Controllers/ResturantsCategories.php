@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class ResturantsCategories extends Controller
 {
@@ -73,7 +75,9 @@ class ResturantsCategories extends Controller
      */
     public function edit($id)
     {
-        //
+        $resturantcategory = \App\ResturantsCategories::find($id);
+
+        return view('resturantcategories.edit', compact('resturantcategory'));
     }
 
     /**
@@ -85,7 +89,28 @@ class ResturantsCategories extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+
+        if (Session::get('locale') == 'en') {
+            $resturantcategory = DB::table('resturants_categories')->where('id', $id)->first();
+            foreach ($resturantcategory as $resturantcategor) {
+                DB::table('resturants_categories')
+                    ->where('id', $id)
+                    ->update(['name' => $request->name]);
+            }
+        } elseif (Session::get('locale') == 'ar') {
+            $resturantcategory = DB::table('resturants_categories')->where('id', $id)->first();
+            foreach ($resturantcategory as $resturantcategor) {
+                DB::table('resturants_categories')
+                    ->where('id', $id)
+                    ->update(['name_ar' => $request->name_ar]);
+            }
+
+        }
+        Session::flash('success',  trans('messages.edit_successfully'));
+
+        return redirect()->back();
+
     }
 
     /**
