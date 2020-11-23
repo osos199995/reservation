@@ -49,7 +49,7 @@ Route::prefix('admin')->group(function(){
     Route::post('resturants-categories-store','ResturantsCategories@store')->name('resturants-categories-store');
     Route::post('resturants-categories-status/{id}','ResturantsCategories@changeStatus')->name('resturants-categories-status');
     Route::get('resturants-categories-edit/{id}','ResturantsCategories@edit')->name('resturants-categories-edit');
-Route::patch('resturants-categories-update/{id}','ResturantsCategories@update')->name('resturants-categories-update');
+    Route::patch('resturants-categories-update/{id}','ResturantsCategories@update')->name('resturants-categories-update');
 
 
 
@@ -58,40 +58,69 @@ Route::patch('resturants-categories-update/{id}','ResturantsCategories@update')-
     Route::get('create-options-categories','ResturantOptions@create')->name('create-resturants-options');
     Route::post('resturants-options-store','ResturantOptions@store')->name('resturants-options-store');
     Route::post('resturants-options-status/{id}','ResturantOptions@changeStatus')->name('resturants-options-status');
-        Route::get('resturants-options-edit/{id}','ResturantOptions@edit')->name('resturants-options-edit');
-        Route::patch('resturants-options-update/{id}','ResturantOptions@update')->name('resturants-options-update');
+    Route::get('resturants-options-edit/{id}','ResturantOptions@edit')->name('resturants-options-edit');
+    Route::patch('resturants-options-update/{id}','ResturantOptions@update')->name('resturants-options-update');
 
     // resturant types
     Route::get('resturants-types','ResturantTypes@index')->name('resturants-types');
     Route::get('create-types-categories','ResturantTypes@create')->name('create-resturants-types');
     Route::post('resturants-types-store','ResturantTypes@store')->name('resturants-types-store');
     Route::post('resturants-types-status/{id}','ResturantTypes@changeStatus')->name('resturants-types-status');
+    Route::get('resturants-types-edit/{id}','ResturantTypes@edit')->name('resturants-types-edit');
+    Route::patch('resturants-types-update/{id}','ResturantTypes@update')->name('resturants-types-update');
 
-        Route::get('resturants-types-edit/{id}','ResturantTypes@edit')->name('resturants-types-edit');
-        Route::patch('resturants-types-update/{id}','ResturantTypes@update')->name('resturants-types-update');
+    // cities routes
 
-});
+        Route::get('cities','CityController@index')->name('cities');
+        Route::get('create-cities','CityController@create')->name('create-cities');
+        Route::post('cities-store','CityController@store')->name('cities-store');
+        Route::get('cities-show/{id}','CityController@show')->name('cities-show');
+        Route::get('cities-edit/{id}','CityController@edit')->name('cities-edit');
+        Route::patch('cities-update/{id}','CityController@update')->name('cities-update');
+        Route::post('cities-status/{id}','CityController@changeStatus')->name('cities-status');
+
+//areas routes
+        Route::get('areas','AreaController@index')->name('areas');
+        Route::get('areas-cities','AreaController@create')->name('areas-cities');
+        Route::post('areas-store','AreaController@store')->name('areas-store');
+        Route::get('areas-show/{id}','AreaController@show')->name('areas-show');
+        Route::get('areas-edit/{id}','AreaController@edit')->name('areas-edit');
+        Route::patch('areas-update/{id}','AreaController@update')->name('areas-update');
+        Route::post('areas-status/{id}','AreaController@changeStatus')->name('areas-status');
+
+    });
 
 
 
 // Vendor routes
+
+
+
+
+
+
+});
 Route::prefix('vendor')->group(function(){
+    Route::group(['middleware' => ['local']], function () {
     Route::get('/', 'Users\Vendor\VendorController@index')->name('vendor.dashboard');
     Route::get('/login', 'Auth\VendorLoginController@showLoginForm')->name('vendor.login');
     Route::post('/login', 'Auth\VendorLoginController@login')->name('vendor.login.submit');
     Route::get('/register', 'Auth\VendorRegisterController@showRegisterForm')->name('vendor.register');
     Route::post('/register', 'Auth\VendorRegisterController@register')->name('vendor.register.submit');
 
-// localization routes
+
+
+        // branches routes
+        Route::get('branches','BranchesController@index')->name('branches');
+        Route::get('create-branches','BranchesController@create')->name('create-branches');
+        Route::post('branches-store','BranchesController@store')->name('branches-store');
+        Route::get('branches-show/{id}','BranchesController@show')->name('branches-show');
+        Route::get('branches-edit/{id}','BranchesController@edit')->name('branches-edit');
+        Route::patch('branches-update/{id}','BranchesController@update')->name('branches-update');
+
 
 
 });
-
-
-
-
-
 });
-
 
 Route::get('setlang/{locale}', 'Localization@set_lang')->name('setlang');

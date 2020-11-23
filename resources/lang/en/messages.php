@@ -32,7 +32,10 @@ return[
     'write the phone number of resturant'=>'write the phone number of resturant',
     'pack_up'=>'pack up',
     'edit_successfully'=>'edit succefully',
-
+    'branches'=>'Branches',
+'cities'=>'cities',
+'areas'=>'areas',
+'create_branch'=>'create_branch',
 
 
 ];

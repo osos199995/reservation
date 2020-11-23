@@ -11,35 +11,35 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
     <title>Admin Pro Admin Template - The Ultimate Bootstrap 4 Admin Template</title>
-    @if (\Illuminate\Support\Facades\App::getLocale() == 'en')
-        <!-- Bootstrap Core CSS -->
-            <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-            <!-- Footable CSS -->
-            <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
-            <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
-            <!-- Page CSS -->
-            <link href="{{asset('assets/css/pages/contact-app-page.css')}}" rel="stylesheet">
-            <link href="{{asset('assets/css/pages/footable-page.css')}}" rel="stylesheet">
-            <!-- Custom CSS -->
-            <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
-            <!-- You can change the theme colors from here -->
-            <link href="{{asset('assets/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
-        @else(\Illuminate\Support\Facades\App::getLocale() == 'ar')
-        <!-- Bootstrap Core CSS -->
-            <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-            <!-- Footable CSS -->
-            <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
-            <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
-            <!-- Page CSS -->
-            <link href="{{asset('assets/rtl/css/pages/contact-app-page.css')}}" rel="stylesheet">
-            <link href="{{asset('assets/rtl/css/pages/footable-page.css')}}" rel="stylesheet">
-            <!-- Custom CSS -->
-            <link href="{{asset('assets/rtl/css/style.css')}}" rel="stylesheet">
-            <!-- You can change the theme colors from here -->
-            <link href="{{asset('assets/rtl/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
-    @endif
+@if (\Illuminate\Support\Facades\App::getLocale() == 'en')
+    <!-- Bootstrap Core CSS -->
+        <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <!-- Footable CSS -->
+        <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
+        <!-- Page CSS -->
+        <link href="{{asset('assets/css/pages/contact-app-page.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/css/pages/footable-page.css')}}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+        <!-- You can change the theme colors from here -->
+        <link href="{{asset('assets/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
+@else(\Illuminate\Support\Facades\App::getLocale() == 'ar')
+    <!-- Bootstrap Core CSS -->
+        <link href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <!-- Footable CSS -->
+        <link href="{{asset('assets/plugins/footable/css/footable.core.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/plugins/bootstrap-select/bootstrap-select.min.css')}}" rel="stylesheet" />
+        <!-- Page CSS -->
+        <link href="{{asset('assets/rtl/css/pages/contact-app-page.css')}}" rel="stylesheet">
+        <link href="{{asset('assets/rtl/css/pages/footable-page.css')}}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{{asset('assets/rtl/css/style.css')}}" rel="stylesheet">
+        <!-- You can change the theme colors from here -->
+        <link href="{{asset('assets/rtl/css/colors/megna-dark.css')}}" id="theme" rel="stylesheet">
+@endif
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -50,11 +50,11 @@
 
 <body
     @if (\Illuminate\Support\Facades\App::getLocale() == 'ar')
-      style="direction: rtl"
+    style="direction: rtl"
     @elseif (\Illuminate\Support\Facades\App::getLocale() == 'en')
     style="direction: ltr"
-      @endif
-      class="fix-header card-no-border fix-sidebar">
+    @endif
+    class="fix-header card-no-border fix-sidebar">
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
@@ -175,13 +175,13 @@
 
                     <li class="">
                         <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                            <i class="mdi mdi-bullseye"></i><span class="hide-menu">{{__('messages.resturants')}}</span></a>
+                            <i class="mdi mdi-bullseye"></i><span class="hide-menu">{{__('messages.branches')}}</span></a>
 
                         <ul aria-expanded="false" class="collapse" style="height: 0px;">
-    @role('manager','admin')
-                            <li><a href="{{route('create-resturants')}}">{{__('messages.create')}}</a></li>
-@endrole
-                            <li><a href="{{route('resturants')}}">{{__('messages.show')}}</a></li>
+
+                            <li><a href="{{route('create-branches')}}">{{__('messages.create')}}</a></li>
+
+                            <li><a href="{{route('branches')}}">{{__('messages.show')}}</a></li>
 
                         </ul>
 
@@ -189,40 +189,8 @@
 
 
 
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">{{__('messages.Resturant_Categories')}} </span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('create-resturants-categories')}}">{{__('messages.create')}}</a></li>
-                            <li><a href="{{route('resturants-categories')}}">{{__('messages.show')}}</a></li>
-                        </ul>
-                    </li>
-
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu"> {{__('messages.Resturant_options')}}</span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('create-resturants-options')}}">{{__('messages.create')}}</a></li>
-                            <li><a href="{{route('resturants-options')}}">{{__('messages.show')}}</a></li>
-                        </ul>
-                    </li>
-
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">    {{__('messages.Resturant_types')}} </span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('create-resturants-types')}}">{{__('messages.create')}}</a></li>
-                            <li><a href="{{route('resturants-types')}}">{{__('messages.show')}}</a></li>
-                        </ul>
-                    </li>
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">    {{__('messages.cities')}} </span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('create-cities')}}">{{__('messages.create')}}</a></li>
-                            <li><a href="{{route('cities')}}">{{__('messages.show')}}</a></li>
-                        </ul>
-                    </li>
 
 
-                    <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">    {{__('messages.areas')}} </span></a>
-                        <ul aria-expanded="false" class="collapse">
-                            <li><a href="{{route('areas-cities')}}">{{__('messages.create')}}</a></li>
-                            <li><a href="{{route('areas')}}">{{__('messages.show')}}</a></li>
-                        </ul>
-                    </li>
 
                 </ul>
 
@@ -234,7 +202,7 @@
     <!-- ============================================================== -->
 
 
-    </div>
+</div>
 
 
 </div>
@@ -289,7 +257,7 @@
     <!-- Style switcher -->
     <!-- ============================================================== -->
     <script src="{{asset('assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
-    @endif
+@endif
 
 
 @yield('scripts')

@@ -32,4 +32,9 @@ return[
     'musician_band'=>'فرقة موسيقية',
     'pack_up'=>'تيك اواى',
 'edit_successfully'=>'تم التعديل بنجاج',
+
+    'branches'=>'الفروع',
+    'cities'=>'المدن',
+    'areas'=>'المناطق',
+    'create_branch'=>'انشاء فرع',
     ];
