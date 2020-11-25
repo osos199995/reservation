@@ -17,7 +17,7 @@ class CreateBranchesTable extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
-            $table->integer('phone');
+            $table->text('phone');
             $table->string('email');
             $table->string('password');
             $table->integer('vendor_id');

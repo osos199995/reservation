@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'vendors',
         ],
+        'branch' => [
+            'driver' => 'session',
+            'provider' => 'branches',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -84,6 +88,11 @@ return [
         'vendors' => [
             'driver' => 'eloquent',
             'model' => App\Vendor::class,
+        ],
+
+        'branches' => [
+            'driver' => 'eloquent',
+            'model' => App\Branch::class,
         ],
 
         // 'users' => [

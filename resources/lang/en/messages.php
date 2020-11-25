@@ -36,6 +36,12 @@ return[
 'cities'=>'cities',
 'areas'=>'areas',
 'create_branch'=>'create_branch',
+'longittude'=>'longittude',
+'lattiude'=>'Lattiude',
+'piece_en'=>'piece_en',
+'piece_ar'=>'piece_ar',
+'piece'=>'piece',
+
 
 
 ];

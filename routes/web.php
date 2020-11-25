@@ -100,16 +100,18 @@ Route::prefix('admin')->group(function(){
 
 
 });
+
 Route::prefix('vendor')->group(function(){
-    Route::group(['middleware' => ['local']], function () {
-    Route::get('/', 'Users\Vendor\VendorController@index')->name('vendor.dashboard');
-    Route::get('/login', 'Auth\VendorLoginController@showLoginForm')->name('vendor.login');
+
+        Route::get('/login', 'Auth\VendorLoginController@showLoginForm')->name('vendor.login');
+
+        Route::get('/', 'Users\Vendor\VendorController@index')->name('vendor.dashboard');
     Route::post('/login', 'Auth\VendorLoginController@login')->name('vendor.login.submit');
     Route::get('/register', 'Auth\VendorRegisterController@showRegisterForm')->name('vendor.register');
     Route::post('/register', 'Auth\VendorRegisterController@register')->name('vendor.register.submit');
 
 
-
+    Route::group(['middleware' => ['vendor','local']], function () {
         // branches routes
         Route::get('branches','BranchesController@index')->name('branches');
         Route::get('create-branches','BranchesController@create')->name('create-branches');
@@ -123,4 +125,18 @@ Route::prefix('vendor')->group(function(){
 });
 });
 
+Route::prefix('branch')->group(function(){
+Route::get('/login', 'Auth\BranchLoginController@showLoginForm')->name('branch.login');
+
+Route::get('/', 'Users\Branch\BranchController@index')->name('branch.dashboard');
+Route::post('/login', 'Auth\BranchLoginController@login')->name('branch.login.submit');
+
+
+Route::group(['middleware' => ['branch']], function () {
+    Route::get('test', function () {
+        return view('branch');
+    });
+
+});
+});
 Route::get('setlang/{locale}', 'Localization@set_lang')->name('setlang');

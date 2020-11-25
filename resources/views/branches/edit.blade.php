@@ -15,20 +15,12 @@
             <!-- ============================================================== -->
             <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
-                    <h3 class="text-themecolor">{{__('messages.create_branch')}}</h3>
-
-
+                    <h3 class="text-themecolor">{{__('messages.edit')}} {{__('messages.resturants')}}</h3>
                 </div>
-                {{--                <div class="col-md-7 align-self-center">--}}
-                {{--                    <ol class="breadcrumb">--}}
-                {{--                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>--}}
-                {{--                        <li class="breadcrumb-item">Forms</li>--}}
-                {{--                        <li class="breadcrumb-item active">Form Basic</li>--}}
-                {{--                    </ol>--}}
+
+                {{--                <div class="">--}}
+                {{--                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>--}}
                 {{--                </div>--}}
-                <div class="">
-                    <button class="right-side-toggle waves-effect waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="ti-settings text-white"></i></button>
-                </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
@@ -39,133 +31,86 @@
             <!-- ============================================================== -->
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-sm-12">
                     <div class="card card-body">
 
-                        <h6 class="card-subtitle"> {{__('messages.create_branch')}} </h6>
-                        {!! Form::open(['method'=>'post','route'=>['branches-store'],'files'=>true]) !!}
-                        <div  @if (\Illuminate\Support\Facades\App::getLocale() == 'ar')
+                        <h6 class="card-subtitle"> {{__('messages.edit')}} {{__('messages.resturants')}} </h6>
+                        {!! Form::model($branch,['method'=>'PATCH','action'=>['BranchesController@update',$branch->id],'files'=>true]) !!}
 
-                              style="float: left" @endif
-                              @if (\Illuminate\Support\Facades\App::getLocale() == 'en')
+                        {{ method_field('patch') }}
+                        @if (\Illuminate\Support\Facades\Session::get('locale') == 'en')
+                     <div class="form-group">
+                            <label>{{__('messages.Name')}} </label>
+        <input type="text"  value="{{$branch->name_en}}"name="name_en" class="form-control" placeholder="write name of resturant">
 
-                              style="float: right" @endif
-                              class="form-group col-md-6">
-                            <label>{{__('messages.Name')}}  <span class="help"> </span></label>
-                            <input type="text"  name="name_en" class="form-control" placeholder="">
-                            @if ($errors->has('name_en'))
-                                <div class="alert alert-danger">{{ $errors->first('name') }}</div>
-                            @endif
+
                         </div>
-                        <div   class="form-group col-md-6">
-                            <label>{{__('messages.Name_ar')}}  <span class="help"> </span></label>
-                            <input type="text"  name="name_ar" class="form-control" placeholder="">
-                            @if ($errors->has('name_ar'))
-                                <div class="alert alert-danger">{{ $errors->first('name_ar') }}</div>
-                            @endif
-                        </div>
-                        <div @if (\Illuminate\Support\Facades\App::getLocale() == 'ar')
+           @else
+                    <div class="form-group">
+                                <label>{{__('messages.Name')}} </label>
+    <input type="text"  value="{{$branch->name_ar}}" name="name_ar" class="form-control" placeholder="write name of resturant">
 
-                             style="float: left" @endif
-                             @if (\Illuminate\Support\Facades\App::getLocale() == 'en')
 
-                             style="float: right" @endif  class="form-group col-md-6">
-                            <label>{{__('messages.longittude')}}  <span class="help"> </span></label>
-                            <input type="text"  name="long" class="form-control" placeholder="">
-                            @if ($errors->has('long'))
-                                <div class="alert alert-danger">{{ $errors->first('long') }}</div>
-                            @endif
-                        </div>
-                        <div   class="form-group col-md-6">
-                            <label>{{__('messages.lattiude')}}  <span class="help"> </span></label>
-                            <input type="text"  name="latt" class="form-control" placeholder="">
-                            @if ($errors->has('latt'))
-                                <div class="alert alert-danger">{{ $errors->first('latt') }}</div>
-                            @endif
-                        </div>
-                        <div  @if (\Illuminate\Support\Facades\App::getLocale() == 'ar')
+                            </div>
+                        @endif
 
-                              style="float: left" @endif
-                              @if (\Illuminate\Support\Facades\App::getLocale() == 'en')
+                        @if (\Illuminate\Support\Facades\Session::get('locale') == 'en')
+                            <div class="form-group">
+                                <label>{{__('messages.piece')}} </label>
+                                <input type="text"  value="{{$branch->piece_en}}"name="piece_en" class="form-control" placeholder="write name of resturant">
 
-                              style="float: right" @endif    class="form-group col-md-6">
-                            <label>{{__('messages.piece_en')}}  <span class="help"> </span></label>
-                            <input type="text"  name="piece_en" class="form-control" placeholder="">
-                            @if ($errors->has('piece_en'))
-                                <div class="alert alert-danger">{{ $errors->first('piece_en') }}</div>
-                            @endif
+
+                            </div>
+                        @else
+                            <div class="form-group">
+                                <label>{{__('messages.piece')}} </label>
+                                <input type="text"  value="{{$branch->piece_ar}}" name="piece_ar" class="form-control" placeholder="write name of resturant">
+
+
+                            </div>
+                        @endif
+
+                        <div class="form-group">
+                            <label>{{__('messages.longittude')}} </label>
+                            <input type="text"  value="{{$branch->longitude}}" name="long" class="form-control" placeholder="write name of resturant">
+
+
                         </div>
-                        <div   class="form-group col-md-6">
-                            <label>{{__('messages.piece_ar')}}  <span class="help"> </span></label>
-                            <input type="text"  name="piece_ar" class="form-control" placeholder="">
-                            @if ($errors->has('piece_ar'))
-                                <div class="alert alert-danger">{{ $errors->first('piece_ar') }}</div>
-                            @endif
+
+                        <div class="form-group">
+                            <label>{{__('messages.lattiude')}} </label>
+                            <input type="text"  value="{{$branch->lattiude}}" name="latt" class="form-control" placeholder="write name of resturant">
+
+
                         </div>
                         <div class="form-group">
-                            <label for="example-email">{{__('messages.Email')}}</label>
-                            <input type="email"  name="email" class="form-control" placeholder="">
-                            @if ($errors->has('email'))
-                                <div class="alert alert-danger">{{ $errors->first('email') }}</div>
-                            @endif
+                            <label for="example-email">{{__('messages.Email')}} </label>
+                            <input type="email" value="{{$branch->email}}"  name="email" class="form-control" placeholder="write your Email">
                         </div>
-                        <div class="form-group">
-                            <label>{{__('messages.Password')}}</label>
-                            <input type="password" name="password" class="form-control" placeholder="*********">
-                            @if ($errors->has('password'))
-                                <div class="alert alert-danger">{{ $errors->first('password') }}</div>
-                            @endif
-                        </div>
+                        {{--                        <div class="form-group">--}}
+                        {{--                            <label>Password</label>--}}
+                        {{--                            <input type="password" name="password" class="form-control" placeholder="*********">--}}
+                        {{--                        </div>--}}
                         <div class="form-group">
                             <label>{{__('messages.phone')}}</label>
-                            <input type="text" name="phone" class="form-control" placeholder="{{__('messages.write the phone number of resturant')}}">
-                            @if ($errors->has('phone'))
-                                <div class="alert alert-danger">{{ $errors->first('phone') }}</div>
-                            @endif
+                            <input type="text" value="{{$branch->phone}}" name="phone" class="form-control" placeholder="write the phone number of resturant">
                         </div>
 
-
-
-
-                        <div class="form-group row p-t-20">
-
-{{--                            <div class="col-sm-4">--}}
-{{--                                @foreach($resturanttypes as $resturanttype)--}}
-{{--                                    <div class="form-check">--}}
-{{--                                        <label class="custom-control custom-radio">--}}
-{{--                                            <input id="radio1" value="{{$resturanttype->id}}" name="type" type="radio" class="custom-control-input">--}}
-{{--                                            <span class="custom-control-indicator"></span>--}}
-{{--                                            <span class="custom-control-description">{{$resturanttype->name}}</span>--}}
-{{--                                            @if ($errors->has('type'))--}}
-{{--                                                <div class="alert alert-danger">{{ $errors->first('type') }}</div>--}}
-{{--                                            @endif--}}
-{{--                                        </label>--}}
-{{--                                    </div>--}}
-{{--                                @endforeach--}}
-{{--                            </div>--}}
-                        </div>
                         <div class="form-group">
                             <label>{{__('messages.Resturant_Categories')}}</label>
                             <select name="category[]"  multiple="multiple" class="custom-select col-12" id="inlineFormCustomSelect">
-                                @foreach($resturantCategories as $resturantcategory)
+                                @foreach($resturant->Categories as $resturantcategory)
                                     <option  value="{{$resturantcategory->id}}">{{$resturantcategory->name}}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('category'))
-                                <div class="alert alert-danger">{{ $errors->first('category') }}</div>
-                            @endif
                         </div>
-
                         <div class="form-group">
                             <label>{{__('messages.Resturant_options')}}</label>
                             <select  name="option[]" multiple="multiple" class="custom-select col-12" id="inlineFormCustomSelect">
-                                @foreach($resturantOptions as $resturantoption)
+                                @foreach($resturant->Options as $resturantoption)
                                     <option value="{{$resturantoption->id}}">{{$resturantoption->name}}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('option'))
-                                <div class="alert alert-danger">{{ $errors->first('option') }}</div>
-                            @endif
                         </div>
 
 
@@ -173,38 +118,23 @@
                             <label>{{__('messages.cities')}}</label>
                             <select  name="city"  class="custom-select col-12" id="inlineFormCustomSelect">
                                 @foreach($cities as $city)
-                                    <option value="{{$city->id}}">{{$city->name_en}}</option>
+                                    <option value="{{$city->id}}">{{$city->Name}}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('city'))
-                                <div class="alert alert-danger">{{ $errors->first('city') }}</div>
-                            @endif
                         </div>
+
+
                         <div class="form-group">
-                            <label>{{__('messages.areas')}}</label>
+                            <label>{{__('messages.cities')}}</label>
                             <select  name="area"  class="custom-select col-12" id="inlineFormCustomSelect">
                                 @foreach($areas as $area)
-                                    <option value="{{$area->id}}">{{$area->name_en}}</option>
+                                    <option value="{{$area->id}}">{{$area->Name}}</option>
                                 @endforeach
                             </select>
-                            @if ($errors->has('area'))
-                                <div class="alert alert-danger">{{ $errors->first('area') }}</div>
-                            @endif
                         </div>
 
-{{--                        <fieldset class="form-group">--}}
 
-{{--                            <label>{{__('messages.Resturant_Logo')}}</label>--}}
-{{--                            <label class="custom-file d-block">--}}
-{{--                                <input type="file" name="image" id="file" class="custom-file-input">--}}
-{{--                                @if ($errors->has('image'))--}}
-{{--                                    <div class="alert alert-danger">{{ $errors->first('image') }}</div>--}}
-{{--                                @endif--}}
-{{--                                <span class="custom-file-control"></span>--}}
-{{--                            </label>--}}
-{{--                        </fieldset>--}}
-
-                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{__('messages.create')}}</button>
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">{{__('messages.edit')}}</button>
 
                         {!! form::close() !!}
                     </div>

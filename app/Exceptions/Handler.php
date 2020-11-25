@@ -43,6 +43,10 @@ class Handler extends ExceptionHandler
             return redirect()->guest(route('vendor.login'));
         }
 
+        if ($request->is('branch') || $request->is('branch/*')) {
+            return redirect()->guest(route('branch.login'));
+        }
+
         return redirect()->guest(route('login'));
     }
 }
